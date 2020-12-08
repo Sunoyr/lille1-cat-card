@@ -16,24 +16,25 @@
 <body>
   <main>
     <header class="bg-primary">
-      <a href="/" class="btn btn-primary back-btn"><i class="fas fa-caret-left mr-2"></i>Back</a>
+      <a href="../lille1-cat-card/index.html" class="btn btn-primary back-btn"><i class="fas fa-caret-left mr-2"></i>Back</a>
       <h1 class="text-white text-center p-3">Cat card app</h1>
     </header>
-    <section class="container">
+
+    <section class="container" id="formulaire">
       <h2>Cat card form</h2>
       <hr />
       <form novalidate class="was-validated">
         <div class="form-group row">
           <label for="cardTitle" class="col-sm-2 col-form-label">Card title</label>
           <input type="text" required class="form-control col-sm-10" id="cardTitle" placeholder="Card title">
-          <div class="invalid-feedback offset-md-2 col-sm-10">
+          <div class="invalid-feedback offset-md-2 col-sm-10" v-if="titleFeedback">
             That field is required. Please provide a value.
           </div>
         </div>
         <div class="form-group row">
           <label for="cardImage" class="col-sm-2 col-form-label">Card image URL</label>
           <input type="url" required class="form-control col-sm-10" id="cardImage" placeholder="Card image URL">
-          <div class="invalid-feedback offset-md-2 col-sm-10">
+          <div class="invalid-feedback offset-md-2 col-sm-10" v-if="imageFeedback">
             That field is required and attempt an URL as value. Please provide a value that respect URL format.
           </div>
         </div>
@@ -42,16 +43,20 @@
           <textarea class="form-control col-sm-10" id="cardDescription"></textarea>
         </div>
         <button class="btn btn-danger">Delete</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary" @click.prevent="submit">Save</button>
       </form>
     </section>
+
     <footer class="bg-light">
-      <div class="container text-center">
-        <i class="far fa-copyright mr-1"></i><label>2018 - Lille 1</label>
+      <div class="container text-center" id="footer">
+        <i class="far fa-copyright mr-1"></i><label>{{ year }} - Lille 1</label>
         <span class="small font-italic infos">No cat has been hurt during the development of this app.</span>
       </div>
     </footer>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="./scripts/form.js"></script>
 </body>
 
 </html>
