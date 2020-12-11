@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The cat card app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main>
+    <header class="bg-primary">
+      <h1 class="text-white text-center p-3">Cat card app</h1>
+    </header>
+    <div id="app" class="container col-8">
+      <div>
+        <input type="text" v-model="message">
+          Petit messagege de test : {{ message }}
+      </div>
+      
+      <input type="checkbox" v-model="cls" :true-value="'alert-success'" :false-value="'alert-danger'">
+      
+      <div class="alert" :class="cls">
+        <p>Ce message s'affiche en fonction de la checkbox ! la class est {{ cls }}</p>
+      </div>
+      <div class="container">
+        <button type="button" class="btn btn-primary" @click="close">{{ actionList }} la liste</button>
+        <ul v-if="showList">
+            <li v-for="name in names">{{ name }}</li>
+        </ul>
+
+        <h1>Tableau de prénoms</h1>
+        {{ names }}
+        <button type="button" class="btn btn-primary" @click="addPerson">Ajouter</button><br>
+        <h2>timer</h2>
+        {{ secondes }}
+      </div>
+    </div>
+
+
+    <div id="test" class="container col-10">
+      <p>
+        Prénom : {{ firstname | capitalize('prefixe', 'suffix') }}<br>
+        Nom : {{ lastname }}<br>
+        Nom complet : <input type="text" v-model="fullname">
+      </p>
+      <span><a href="http://www.google.com" @click.prevent="demo">démo</a></span><br>
+      <input type="text" v-salut="firstname">
+      <input type="text" v-model="firstname"><br><br><br>
+
+      <message :message="message" header="Attention" v-if="alert" @close="hideAlert"></message>
+      <button class="button btn-dark" @click="showAlert">Alerter</button>
+      <br>
+
+      <counter :start="3"></counter>
+      <counter></counter>
+
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="./scripts/app_test.js"></script>
+</body>
+</html>
