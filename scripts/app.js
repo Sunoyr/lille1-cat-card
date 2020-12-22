@@ -26,9 +26,9 @@ let btnplus = Vue.component('btnplus', {
     </div>`,
     methods: {
         goForm: function() {
-            window.location.href = '../lille1-cat-card/cat-form.html'
+            window.location.href = '../cat-form.html'
+        }
     }
-}
 });
 
 let app = new Vue({
